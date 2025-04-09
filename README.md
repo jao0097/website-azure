@@ -1,1 +1,1 @@
-# website-azure
+# o site tem o objetivo de informar sobre acontecimentos no mundo do esporte, e feito com noticias do dia, visando o fácil acesso da população sobre tudo que acontece no ramo dos esportes. O nome do site é Mundo dos Esportes, e com uma interface minimalista, cores temas sendo preto e roxo, e dividido em tópicos sobre cada esporte, com o icone do site sendo as inciais ME, em preto e roxo.   website-azure 
