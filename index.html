@@ -1,30 +1,314 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Apostas Online</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mundo dos Esportes | Notícias Esportivas Diárias</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%235512a8'/><text x='50%' y='50%' font-family='Arial' font-size='60' text-anchor='middle' dominant-baseline='middle' fill='%23000'>ME</text></svg>">
+    <style>
+        :root {
+            --primary: #5512a8;
+            --secondary: #000;
+            --text: #f0f0f0;
+            --light-bg: #1a1a1a;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-right: 15px;
+        }
+        
+        nav {
+            background-color: var(--light-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1.2rem;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .destaque {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .destaque img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .noticias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .noticia-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 1.2rem;
+            transition: transform 0.3s;
+            border-top: 3px solid var(--primary);
+        }
+        
+        .noticia-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .noticia-card img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .esporte-tag {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        h1, h2, h3 {
+            color: white;
+        }
+        
+        h2 {
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+            margin: 2rem 0 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav li {
+                margin: 0 0.8rem;
+            }
+            
+            .noticias-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="glass-card">
-            <h1 class="neon-text">ACESSO</h1>
-            <form action="jogos.html" method="GET">
-                <div class="input-group">
-                    <input type="text" id="username" required>
-                    <label for="username">Usuário</label>
-                    <span class="focus-border"></span>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" required>
-                    <label for="password">Senha</label>
-                    <span class="focus-border"></span>
-                </div>
-                <button type="submit" class="pulse-button">ENTRAR</button>
-            </form>
-            <p class="register-link">Não tem conta? <a href="#" class="glow-link">Cadastre-se</a></p>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">ME</div>
+            <h1>Mundo dos Esportes</h1>
         </div>
+        <p>Informações diárias sobre tudo que acontece no universo esportivo</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#futebol">Futebol</a></li>
+            <li><a href="#basquete">Basquete</a></li>
+            <li><a href="#tenis">Tênis</a></li>
+            <li><a href="#f1">Fórmula 1</a></li>
+            <li><a href="#olimpiadas">Olímpiadas</a></li>
+            <li><a href="#outros">Outros Esportes</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section class="destaque">
+            <h2>Destaque do Dia</h2>
+            <article>
+                <img src="https://via.placeholder.com/1200x600/5512a8/ffffff?text=Destaque+Esportivo" alt="Destaque do dia">
+                <h3>Seleção Brasileira anuncia novo técnico para o ciclo da Copa do Mundo</h3>
+                <p>Após semanas de especulações, a CBF confirmou nesta terça-feira a contratação do novo comandante da seleção canarinho. O anúncio oficial acontecerá em coletiva marcada para quinta-feira, mas fontes próximas ao departamento de futebol já adiantam que se trata de um treinador estrangeiro com vasta experiência em competições continentais.</p>
+                <p><strong>Fonte:</strong> Redação ME | <strong>Data:</strong> 15/07/2024</p>
+            </article>
+        </section>
+        
+        <section id="futebol">
+            <h2>Futebol</h2>
+            <div class="noticias-grid">
+                <article class="noticia-card">
+                    <span class="esporte-tag">Futebol</span>
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Mercado+da+Bola" alt="Mercado da Bola">
+                    <h3>Clube europeu faz oferta milionária por joia do Brasileirão</h3>
+                    <p>O atacante brasileiro, artilheiro do campeonato nacional, está próximo de acertar sua transferência para o velho continente. Os valores envolvidos podem bater recorde para saídas do futebol brasileiro em 2024.</p>
+                    <p><strong>Data:</strong> 14/07/2024</p>
+                </article>
+                
+                <article class="noticia-card">
+                    <span class="esporte-tag">Futebol</span>
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Copa+Libertadores" alt="Copa Libertadores">
+                    <h3>Libertadores: Confrontos das quartas de final definidos</h3>
+                    <p>Sorteio realizado nesta manhã em Luque determinou os jogos da próxima fase da competição continental. Destaque para o clássico entre dois gigantes sul-americanos que se enfrentarão em busca de vaga na semifinal.</p>
+                    <p><strong>Data:</strong> 13/07/2024</p>
+                </article>
+                
+                <article class="noticia-card">
+                    <span class="esporte-tag">Futebol</span>
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Campeonato+Inglês" alt="Premier League">
+                    <h3>Premier League anuncia mudanças nas regras para próxima temporada</h3>
+                    <p>A liga inglesa divulgou novidades que incluem aumento no número de substituições e novas regras para o VAR. As mudanças começam a valer a partir de agosto e prometem causar polêmica entre técnicos e jogadores.</p>
+                    <p><strong>Data:</strong> 12/07/2024</p>
+                </article>
+            </div>
+        </section>
+        
+        <section id="basquete">
+            <h2>Basquete</h2>
+            <div class="noticias-grid">
+                <article class="noticia-card">
+                    <span class="esporte-tag">Basquete</span>
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=NBA" alt="NBA">
+                    <h3>NBA: Franquia anuncia construção de nova arena bilionária</h3>
+                    <p>Com investimento que ultrapassa os US$ 2 bilhões, o novo estádio promete revolucionar a experiência dos fãs com tecnologia de ponta. A previsão é que as obras sejam concluídas até o início da temporada 2026-27.</p>
+                    <p><strong>Data:</strong> 14/07/2024</p>
+                </article>
+                
+                <article class="noticia-card">
+                    <span class="esporte-tag">Basquete</span>
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=NBB" alt="NBB">
+                    <h3>NBB: Temporada regular começa com recorde de público</h3>
+                    <p>Abertura do campeonato brasileiro reuniu mais de 15 mil pessoas no ginásio e marcou o início da era pós-Flamengo como hegemônico. Novas equipes prometem equilibrar a competição nesta edição.</p>
+                    <p><strong>Data:</strong> 13/07/2024</p>
+                </article>
+            </div>
+        </section>
+        
+        <section id="tenis">
+            <h2>Tênis</h2>
+            <div class="noticias-grid">
+                <article class="noticia-card">
+                    <span class="esporte-tag">Tênis</span>
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Wimbledon" alt="Wimbledon">
+                    <h3>Wimbledon: Surpresa nas quartas de final</h3>
+                    <p>Jogador fora do top 50 do ranking consegue façanha histórica ao eliminar um dos favoritos ao título. A torcida inglesa já compara o feito a maiores zebras da história do torneio.</p>
+                    <p><strong>Data:</strong> 10/07/2024</p>
+                </article>
+            </div>
+        </section>
+        
+        <section id="f1">
+            <h2>Fórmula 1</h2>
+            <div class="noticias-grid">
+                <article class="noticia-card">
+                    <span class="esporte-tag">Fórmula 1</span>
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=F1" alt="Fórmula 1">
+                    <h3>GP da Grã-Bretanha: Pole position surpreendente</h3>
+                    <p>Piloto de equipe intermediária consegue o primeiro lugar no grid de largada após sessão de classificação marcada por condições climáticas adversas. Especialistas apontam que a prova pode ter uma das maiores reviravoltas da temporada.</p>
+                    <p><strong>Data:</strong> 08/07/2024</p>
+                </article>
+            </div>
+        </section>
     </div>
+    
+    <footer>
+        <h3>Mundo dos Esportes</h3>
+        <p>O seu portal de notícias esportivas diárias</p>
+        
+        <div class="footer-links">
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+            <a href="#">Anuncie</a>
+            <a href="#">Termos de Uso</a>
+            <a href="#">Política de Privacidade</a>
+        </div>
+        
+        <p>&copy; 2024 Mundo dos Esportes. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
