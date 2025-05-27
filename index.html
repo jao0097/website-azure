@@ -1,314 +1,230 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo dos Esportes | Notícias Esportivas Diárias</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%235512a8'/><text x='50%' y='50%' font-family='Arial' font-size='60' text-anchor='middle' dominant-baseline='middle' fill='%23000'>ME</text></svg>">
+    <title>Medical Client Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #5512a8;
-            --secondary: #000;
-            --text: #f0f0f0;
-            --light-bg: #1a1a1a;
-        }
-        
+        /* Custom styles for professional look */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--secondary);
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
         }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem 0;
-            text-align: center;
-            border-bottom: 3px solid var(--primary);
+        .table-header:hover {
+            background-color: #e5e7eb;
+            cursor: pointer;
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-        
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: var(--secondary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.8rem;
-            margin-right: 15px;
-        }
-        
-        nav {
-            background-color: var(--light-bg);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav li {
-            margin: 0 1.2rem;
-        }
-        
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 0.5rem 0;
-            transition: color 0.3s;
-            border-bottom: 2px solid transparent;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-        
-        .destaque {
-            background-color: var(--light-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2.5rem;
-            border-left: 5px solid var(--primary);
-        }
-        
-        .destaque img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        
-        .noticias-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .noticia-card {
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            padding: 1.2rem;
-            transition: transform 0.3s;
-            border-top: 3px solid var(--primary);
-        }
-        
-        .noticia-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .noticia-card img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
-        
-        .esporte-tag {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 0.8rem;
-        }
-        
-        footer {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            margin: 1.5rem 0;
-        }
-        
-        .footer-links a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-        
-        h1, h2, h3 {
-            color: white;
-        }
-        
-        h2 {
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
-            margin: 2rem 0 1.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            nav li {
-                margin: 0 0.8rem;
-            }
-            
-            .noticias-grid {
-                grid-template-columns: 1fr;
-            }
+        .success-message {
+            transition: opacity 0.5s ease;
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <div class="logo-icon">ME</div>
-            <h1>Mundo dos Esportes</h1>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/40" alt="Logo" class="mr-3" aria-hidden="true">
+                <h1 class="text-2xl font-bold">Medical Client Management</h1>
+            </div>
+            <nav aria-label="Main navigation">
+                <ul class="flex space-x-4">
+                    <li><a href="#signup" class="hover:underline" aria-current="page">Sign Up</a></li>
+                    <li><a href="#clients" class="hover:underline">View Clients</a></li>
+                </ul>
+            </nav>
         </div>
-        <p>Informações diárias sobre tudo que acontece no universo esportivo</p>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#futebol">Futebol</a></li>
-            <li><a href="#basquete">Basquete</a></li>
-            <li><a href="#tenis">Tênis</a></li>
-            <li><a href="#f1">Fórmula 1</a></li>
-            <li><a href="#olimpiadas">Olímpiadas</a></li>
-            <li><a href="#outros">Outros Esportes</a></li>
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <section class="destaque">
-            <h2>Destaque do Dia</h2>
-            <article>
-                <img src="https://via.placeholder.com/1200x600/5512a8/ffffff?text=Destaque+Esportivo" alt="Destaque do dia">
-                <h3>Seleção Brasileira anuncia novo técnico para o ciclo da Copa do Mundo</h3>
-                <p>Após semanas de especulações, a CBF confirmou nesta terça-feira a contratação do novo comandante da seleção canarinho. O anúncio oficial acontecerá em coletiva marcada para quinta-feira, mas fontes próximas ao departamento de futebol já adiantam que se trata de um treinador estrangeiro com vasta experiência em competições continentais.</p>
-                <p><strong>Fonte:</strong> Redação ME | <strong>Data:</strong> 15/07/2024</p>
-            </article>
+
+    <div class="container mx-auto p-6">
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden bg-green-100 text-green-800 p-4 rounded-md mb-6 success-message" role="alert">
+            Client registered successfully!
+        </div>
+
+        <!-- Sign-Up Form -->
+        <section id="signup" class="bg-white p-6 rounded-lg shadow-md mb-8" aria-labelledby="signup-heading">
+            <h2 id="signup-heading" class="text-xl font-semibold text-gray-800 mb-4">Register New Client</h2>
+            <form id="signupForm" class="space-y-4">
+                <div>
+                    <label for="medicalId" class="block text-sm font-medium text-gray-700">Medical ID</label>
+                    <input type="text" id="medicalId" class="mt-1 p-2 w-full border rounded-md focus:ring-blue-500 focus:border-blue-500" required aria-describedby="medicalId-error">
+                    <p id="medicalId-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="name" class="mt-1 p-2 w-full border rounded-md focus:ring-blue-500 focus:border-blue-500" required aria-describedby="name-error">
+                    <p id="name-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth (YYYY-MM-DD)</label>
+                    <input type="text" id="dob" class="mt-1 p-2 w-full border rounded-md focus:ring-blue-500 focus:border-blue-500" required aria-describedby="dob-error">
+                    <p id="dob-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="tel" id="phone" class="mt-1 p-2 w-full border rounded-md focus:ring-blue-500 focus:border-blue-500" required aria-describedby="phone-error">
+                    <p id="phone-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" class="mt-1 p-2 w-full border rounded-md focus:ring-blue-500 focus:border-blue-500" required aria-describedby="email-error">
+                    <p id="email-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                    <input type="text" id="address" class="mt-1 p-2 w-full border rounded-md focus:ring-blue-500 focus:border-blue-500" aria-describedby="address-error">
+                    <p id="address-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Register Client</button>
+            </form>
         </section>
-        
-        <section id="futebol">
-            <h2>Futebol</h2>
-            <div class="noticias-grid">
-                <article class="noticia-card">
-                    <span class="esporte-tag">Futebol</span>
-                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Mercado+da+Bola" alt="Mercado da Bola">
-                    <h3>Clube europeu faz oferta milionária por joia do Brasileirão</h3>
-                    <p>O atacante brasileiro, artilheiro do campeonato nacional, está próximo de acertar sua transferência para o velho continente. Os valores envolvidos podem bater recorde para saídas do futebol brasileiro em 2024.</p>
-                    <p><strong>Data:</strong> 14/07/2024</p>
-                </article>
-                
-                <article class="noticia-card">
-                    <span class="esporte-tag">Futebol</span>
-                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Copa+Libertadores" alt="Copa Libertadores">
-                    <h3>Libertadores: Confrontos das quartas de final definidos</h3>
-                    <p>Sorteio realizado nesta manhã em Luque determinou os jogos da próxima fase da competição continental. Destaque para o clássico entre dois gigantes sul-americanos que se enfrentarão em busca de vaga na semifinal.</p>
-                    <p><strong>Data:</strong> 13/07/2024</p>
-                </article>
-                
-                <article class="noticia-card">
-                    <span class="esporte-tag">Futebol</span>
-                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Campeonato+Inglês" alt="Premier League">
-                    <h3>Premier League anuncia mudanças nas regras para próxima temporada</h3>
-                    <p>A liga inglesa divulgou novidades que incluem aumento no número de substituições e novas regras para o VAR. As mudanças começam a valer a partir de agosto e prometem causar polêmica entre técnicos e jogadores.</p>
-                    <p><strong>Data:</strong> 12/07/2024</p>
-                </article>
-            </div>
-        </section>
-        
-        <section id="basquete">
-            <h2>Basquete</h2>
-            <div class="noticias-grid">
-                <article class="noticia-card">
-                    <span class="esporte-tag">Basquete</span>
-                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=NBA" alt="NBA">
-                    <h3>NBA: Franquia anuncia construção de nova arena bilionária</h3>
-                    <p>Com investimento que ultrapassa os US$ 2 bilhões, o novo estádio promete revolucionar a experiência dos fãs com tecnologia de ponta. A previsão é que as obras sejam concluídas até o início da temporada 2026-27.</p>
-                    <p><strong>Data:</strong> 14/07/2024</p>
-                </article>
-                
-                <article class="noticia-card">
-                    <span class="esporte-tag">Basquete</span>
-                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=NBB" alt="NBB">
-                    <h3>NBB: Temporada regular começa com recorde de público</h3>
-                    <p>Abertura do campeonato brasileiro reuniu mais de 15 mil pessoas no ginásio e marcou o início da era pós-Flamengo como hegemônico. Novas equipes prometem equilibrar a competição nesta edição.</p>
-                    <p><strong>Data:</strong> 13/07/2024</p>
-                </article>
-            </div>
-        </section>
-        
-        <section id="tenis">
-            <h2>Tênis</h2>
-            <div class="noticias-grid">
-                <article class="noticia-card">
-                    <span class="esporte-tag">Tênis</span>
-                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=Wimbledon" alt="Wimbledon">
-                    <h3>Wimbledon: Surpresa nas quartas de final</h3>
-                    <p>Jogador fora do top 50 do ranking consegue façanha histórica ao eliminar um dos favoritos ao título. A torcida inglesa já compara o feito a maiores zebras da história do torneio.</p>
-                    <p><strong>Data:</strong> 10/07/2024</p>
-                </article>
-            </div>
-        </section>
-        
-        <section id="f1">
-            <h2>Fórmula 1</h2>
-            <div class="noticias-grid">
-                <article class="noticia-card">
-                    <span class="esporte-tag">Fórmula 1</span>
-                    <img src="https://via.placeholder.com/600x400/1a1a1a/5512a8?text=F1" alt="Fórmula 1">
-                    <h3>GP da Grã-Bretanha: Pole position surpreendente</h3>
-                    <p>Piloto de equipe intermediária consegue o primeiro lugar no grid de largada após sessão de classificação marcada por condições climáticas adversas. Especialistas apontam que a prova pode ter uma das maiores reviravoltas da temporada.</p>
-                    <p><strong>Data:</strong> 08/07/2024</p>
-                </article>
-            </div>
+
+        <!-- Client List -->
+        <section id="clients" class="bg-white p-6 rounded-lg shadow-md" aria-labelledby="clients-heading">
+            <h2 id="clients-heading" class="text-xl font-semibold text-gray-800 mb-4">Client List</h2>
+            <table class="w-full border-collapse" aria-describedby="clients-heading">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border p-2 table-header" data-sort="medicalId">Medical ID</th>
+                        <th class="border p-2 table-header" data-sort="name">Name</th>
+                        <th class="border p-2 table-header" data-sort="dob">DOB</th>
+                        <th class="border p-2 table-header" data-sort="phone">Phone</th>
+                        <th class="border p-2 table-header" data-sort="email">Email</th>
+                        <th class="border p-2">Address</th>
+                    </tr>
+                </thead>
+                <tbody id="clientTableBody"></tbody>
+            </table>
         </section>
     </div>
-    
-    <footer>
-        <h3>Mundo dos Esportes</h3>
-        <p>O seu portal de notícias esportivas diárias</p>
-        
-        <div class="footer-links">
-            <a href="#">Sobre</a>
-            <a href="#">Contato</a>
-            <a href="#">Anuncie</a>
-            <a href="#">Termos de Uso</a>
-            <a href="#">Política de Privacidade</a>
-        </div>
-        
-        <p>&copy; 2024 Mundo dos Esportes. Todos os direitos reservados.</p>
-    </footer>
+
+    <script>
+        // Load clients from local storage
+        let clients = JSON.parse(localStorage.getItem('clients')) || [];
+
+        // Validation functions
+        function isValidDate(dateStr) {
+            const regex = /^\d{4}-\d{2}-\d{2}$/;
+            if (!regex.test(dateStr)) return false;
+            const date = new Date(dateStr);
+            return date instanceof Date && !isNaN(date);
+        }
+
+        function isValidEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const regex = /^\+?[\d\s-]{10,}$/;
+            return regex.test(phone);
+        }
+
+        function isUniqueMedicalId(medicalId) {
+            return !clients.some(client => client.medicalId === medicalId);
+        }
+
+        // Display clients in table
+        function displayClients() {
+            const tableBody = document.getElementById('clientTableBody');
+            tableBody.innerHTML = '';
+            clients.forEach(client => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="border p-2">${client.medicalId}</td>
+                    <td class="border p-2">${client.name}</td>
+                    <td class="border p-2">${client.dob}</td>
+                    <td class="border p-2">${client.phone}</td>
+                    <td class="border p-2">${client.email}</td>
+                    <td class="border p-2">${client.address || ''}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Sort clients
+        function sortClients(key) {
+            clients.sort((a, b) => {
+                if (a[key] < b[key]) return -1;
+                if (a[key] > b[key]) return 1;
+                return 0;
+            });
+            displayClients();
+        }
+
+        // Handle form submission
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('hidden');
+            document.querySelectorAll('.text-red-500').forEach(el => el.classList.add('hidden'));
+
+            const medicalId = document.getElementById('medicalId').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const dob = document.getElementById('dob').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            // Validation
+            let valid = true;
+            if (!medicalId) {
+                document.getElementById('medicalId-error').textContent = 'Medical ID is required.';
+                document.getElementById('medicalId-error').classList.remove('hidden');
+                valid = false;
+            } else if (!isUniqueMedicalId(medicalId)) {
+                document.getElementById('medicalId-error').textContent = 'Medical ID must be unique.';
+                document.getElementById('medicalId-error').classList.remove('hidden');
+                valid = false;
+            }
+            if (!name) {
+                document.getElementById('name-error').textContent = 'Name is required.';
+                document.getElementById('name-error').classList.remove('hidden');
+                valid = false;
+            }
+            if (!dob || !isValidDate(dob)) {
+                document.getElementById('dob-error').textContent = 'Valid date (YYYY-MM-DD) is required.';
+                document.getElementById('dob-error').classList.remove('hidden');
+                valid = false;
+            }
+            if (!phone || !isValidPhone(phone)) {
+                document.getElementById('phone-error').textContent = 'Valid phone number (e.g., +1234567890) is required.';
+                document.getElementById('phone-error').classList.remove('hidden');
+                valid = false;
+            }
+            if (!email || !isValidEmail(email)) {
+                document.getElementById('email-error').textContent = 'Valid email is required.';
+                document.getElementById('email-error').classList.remove('hidden');
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            // Add client
+            const client = { medicalId, name, dob, phone, email, address };
+            clients.push(client);
+            localStorage.setItem('clients', JSON.stringify(clients));
+
+            // Show success message and clear form
+            successMessage.classList.remove('hidden');
+            setTimeout(() => successMessage.classList.add('hidden'), 3000);
+            this.reset();
+
+            // Update table
+            displayClients();
+        });
+
+        // Handle table sorting
+        document.querySelectorAll('.table-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const key = header.getAttribute('data-sort');
+                if (key) sortClients(key);
+            });
+        });
+
+        // Initial display
+        displayClients();
+    </script>
 </body>
 </html>
