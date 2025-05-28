@@ -3,103 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Porta-maquiagem ecológico GreenWave, feito de papelão reciclado, para organizar seus cosméticos de forma sustentável.">
-  <meta name="keywords" content="porta-maquiagem, organizador de maquiagem, papelão reciclado, ecológico, sustentável">
+  <meta name="description" content="Porta-maquiagem ecológico GreenWave, feito de papelão reciclado, com design sofisticado para organizar seus cosméticos de forma sustentável.">
+  <meta name="keywords" content="porta-maquiagem, organizador de maquiagem, papelão reciclado, ecológico, sustentável, design premium">
   <title>GreenWave - Porta-Maquiagem Ecológico</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Lato', sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .btn-hover { transition: all 0.3s ease; }
+    .btn-hover:hover { transform: scale(1.05); }
+    .fade-in { animation: fadeIn 1s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-beige-100">
   <!-- Cabeçalho -->
-  <header class="bg-green-700 text-white py-4 sticky top-0 z-10">
-    <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="text-2xl font-bold">GreenWave</h1>
+  <header class="bg-green-800 text-white py-6 sticky top-0 z-10 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <h1 class="text-3xl font-bold">GreenWave</h1>
       <nav>
-        <ul class="flex space-x-6">
-          <li><a href="#home" class="hover:underline">Início</a></li>
-          <li><a href="#benefits" class="hover:underline">Benefícios</a></li>
-          <li><a href="#testimonials" class="hover:underline">Depoimentos</a></li>
-          <li><a href="#contact" class="hover:underline">Contato</a></li>
+        <ul class="flex space-x-8">
+          <li><a href="#home" class="hover:text-gold-400 transition-colors">Início</a></li>
+          <li><a href="#benefits" class="hover:text-gold-400 transition-colors">Benefícios</a></li>
+          <li><a href="#gallery" class="hover:text-gold-400 transition-colors">Galeria</a></li>
+          <li><a href="#testimonials" class="hover:text-gold-400 transition-colors">Depoimentos</a></li>
+          <li><a href="#contact" class="hover:text-gold-400 transition-colors">Contato</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- Seção Hero -->
-  <section id="home" class="bg-cover bg-center h-screen flex items-center justify-center" style="background-image: url('https://source.unsplash.com/random/1600x900/?sustainability,recycled')">
-    <div class="text-center text-white bg-black bg-opacity-50 p-8 rounded-lg">
-      <h2 class="text-4xl font-bold mb-4">GreenWave: Organize com Sustentabilidade</h2>
-      <p class="text-lg mb-6">Porta-maquiagem ecológico feito de papelão reciclado, perfeito para organizar seus cosméticos com estilo e consciência ambiental.</p>
-      <a href="#contact" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-700">Compre Agora</a>
+  <section id="home" class="bg-cover bg-center h-screen flex items-center justify-center fade-in" style="background-image: url('https://source.unsplash.com/random/1600x900/?sustainability,recycled')">
+    <div class="text-center text-white bg-black bg-opacity-60 p-10 rounded-lg">
+      <h2 class="text-5xl font-bold mb-4">GreenWave: Elegância Sustentável</h2>
+      <p class="text-xl mb-6 max-w-2xl mx-auto">Descubra o Porta-Maquiagem GreenWave, artesanalmente feito de papelão reciclado, combinando sofisticação e responsabilidade ambiental para organizar seus cosméticos com estilo.</p>
+      <div class="space-x-4">
+        <a href="#contact" class="bg-green-600 text-white px-8 py-3 rounded-full btn-hover hover:bg-green-700">Compre Agora</a>
+        <button id="add-to-cart" class="bg-gold-400 text-green-800 px-8 py-3 rounded-full btn-hover hover:bg-gold-500">Adicionar ao Carrinho</button>
+      </div>
     </div>
   </section>
 
   <!-- Seção de Benefícios -->
-  <section id="benefits" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Por que escolher o Porta-Maquiagem GreenWave?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <h3 class="text-xl font-semibold mb-2">Sustentabilidade</h3>
-          <p>Feito de papelão reciclado, contribui para a redução de resíduos e um planeta mais verde.</p>
+  <section id="benefits" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-green-800 mb-12">Por que escolher o Porta-Maquiagem GreenWave?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="text-center p-6 bg-beige-100 rounded-lg shadow-md">
+          <h3 class="text-2xl font-semibold text-green-800 mb-3">Sustentabilidade Premium</h3>
+          <p>Criado com papelão reciclado de alta qualidade, reduzindo resíduos e promovendo um planeta mais verde.</p>
         </div>
-        <div class="text-center">
-          <h3 class="text-xl font-semibold mb-2">Praticidade</h3>
-          <p>Divisórias personalizáveis para organizar batons, pincéis e outros cosméticos com facilidade.</p>
+        <div class="text-center p-6 bg-beige-100 rounded-lg shadow-md">
+          <h3 class="text-2xl font-semibold text-green-800 mb-3">Organização Inteligente</h3>
+          <p>Divisórias ajustáveis para organizar batons, pincéis e paletas com praticidade e elegância.</p>
         </div>
-        <div class="text-center">
-          <h3 class="text-xl font-semibold mb-2">Design Personalizável</h3>
-          <p>Escolha cores e estampas para combinar com seu estilo, mantendo a elegância e funcionalidade.</p>
+        <div class="text-center p-6 bg-beige-100 rounded-lg shadow-md">
+          <h3 class="text-2xl font-semibold text-green-800 mb-3">Design Exclusivo</h3>
+          <p>Personalize cores e acabamentos para um porta-maquiagem que reflete seu estilo único.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Galeria -->
+  <section id="gallery" class="py-20 bg-beige-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-green-800 mb-12">Explore o Porta-Maquiagem GreenWave</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="relative overflow-hidden rounded-lg shadow-lg">
+          <img src="https://source.unsplash.com/random/400x300/?makeup,organizer" alt="Porta-Maquiagem 1" class="w-full h-64 object-cover">
+          <p class="text-center mt-2 text-green-800 font-semibold">Modelo Clássico</p>
+        </div>
+        <div class="relative overflow-hidden rounded-lg shadow-lg">
+          <img src="https://source.unsplash.com/random/400x300/?cardboard,makeup" alt="Porta-Maquiagem 2" class="w-full h-64 object-cover">
+          <p class="text-center mt-2 text-green-800 font-semibold">Modelo Personalizado</p>
+        </div>
+        <div class="relative overflow-hidden rounded-lg shadow-lg">
+          <img src="https://source.unsplash.com/random/400x300/?sustainable,makeup" alt="Porta-Maquiagem 3" class="w-full h-64 object-cover">
+          <p class="text-center mt-2 text-green-800 font-semibold">Modelo Compacto</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Seção de Depoimentos -->
-  <section id="testimonials" class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">O que nossos clientes dizem</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <p class="italic">"O porta-maquiagem GreenWave organizou minha penteadeira e ainda é ecológico! Adoro o design personalizado."</p>
-          <p class="mt-4 font-semibold">- Ana L., Maquiadora Profissional</p>
+  <section id="testimonials" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-green-800 mb-12">O que nossos clientes dizem</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="bg-beige-100 p-8 rounded-lg shadow-md">
+          <p class="italic text-gray-700">"O porta-maquiagem GreenWave transformou minha penteadeira com seu design elegante e sustentável. A personalização é um toque de luxo!"</p>
+          <p class="mt-4 font-semibold text-green-800">- Ana L., Maquiadora Profissional</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <p class="italic">"Prático, leve e sustentável. Agora meus cosméticos estão sempre em ordem, sem prejudicar o meio ambiente."</p>
-          <p class="mt-4 font-semibold">- Carlos M., Consumidor Consciente</p>
+        <div class="bg-beige-100 p-8 rounded-lg shadow-md">
+          <p class="italic text-gray-700">"Um produto que une praticidade, beleza e responsabilidade ambiental. Meu GreenWave é indispensável!"</p>
+          <p class="mt-4 font-semibold text-green-800">- Carlos M., Consumidor Consciente</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Formulário de Contato -->
-  <section id="contact" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Entre em Contato</h2>
+  <section id="contact" class="py-20 bg-beige-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-green-800 mb-12">Entre em Contato</h2>
       <div class="max-w-lg mx-auto">
-        <div id="contact-form" class="space-y-4">
+        <div id="contact-form" class="space-y-6 bg-white p-8 rounded-lg shadow-lg">
           <div>
-            <label for="name" class="block text-sm font-medium">Nome</label>
-            <input type="text" id="name" class="w-full p-2 border rounded-md" placeholder="Seu nome">
+            <label for="name" class="block text-sm font-medium text-green-800">Nome</label>
+            <input type="text" id="name" class="w-full p-3 border border-green-200 rounded-md focus:ring focus:ring-green-300" placeholder="Seu nome">
           </div>
           <div>
-            <label for="email" class="block text-sm font-medium">E-mail</label>
-            <input type="email" id="email" class="w-full p-2 border rounded-md" placeholder="Seu e-mail">
+            <label for="email" class="block text-sm font-medium text-green-800">E-mail</label>
+            <input type="email" id="email" class="w-full p-3 border border-green-200 rounded-md focus:ring focus:ring-green-300" placeholder="Seu e-mail">
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium">Mensagem</label>
-            <textarea id="message" class="w-full p-2 border rounded-md" rows="4" placeholder="Sua mensagem"></textarea>
+            <label for="appointment-date" class="block text-sm font-medium text-green-800">Data para Agendamento</label>
+            <input type="date" id="appointment-date" class="w-full p-3 border border-green-200 rounded-md focus:ring focus:ring-green-300">
           </div>
-          <button id="submit-btn" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-700">Enviar</button>
+          <div>
+            <label for="message" class="block text-sm font-medium text-green-800">Mensagem</label>
+            <textarea id="message" class="w-full p-3 border border-green-200 rounded-md focus:ring focus:ring-green-300" rows="4" placeholder="Sua mensagem"></textarea>
+          </div>
+          <button id="submit-btn" class="w-full bg-green-600 text-white px-8 py-3 rounded-full btn-hover hover:bg-green-700">Enviar</button>
+          <p id="form-message" class="text-center text-green-800 hidden mt-4">Mensagem enviada com sucesso!</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Rodapé -->
-  <footer class="bg-green-700 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p>© 2025 GreenWave. Todos os direitos reservados.</p>
-      <p class="mt-2">Contato: contato@greenwave.com | (11) 9876-5432</p>
+  <footer class="bg-green-800 text-white py-10">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-lg">© 2025 GreenWave. Todos os direitos reservados.</p>
+      <p class="mt-2">Contato: <a href="mailto:contato@greenwave.com" class="hover:text-gold-400">contato@greenwave.com</a> | (11) 9876-5432</p>
     </div>
   </footer>
 
@@ -108,16 +147,28 @@
     document.getElementById('submit-btn').addEventListener('click', function() {
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
+      const appointmentDate = document.getElementById('appointment-date').value;
       const message = document.getElementById('message').value;
+      const formMessage = document.getElementById('form-message');
 
-      if (name && email && message) {
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+      if (name && email && appointmentDate && message) {
+        formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+        formMessage.classList.remove('hidden');
+        setTimeout(() => formMessage.classList.add('hidden'), 3000);
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
+        document.getElementById('appointment-date').value = '';
         document.getElementById('message').value = '';
       } else {
-        alert('Por favor, preencha todos os campos.');
+        formMessage.textContent = 'Por favor, preencha todos os campos, incluindo a data de agendamento.';
+        formMessage.classList.remove('hidden');
+        setTimeout(() => formMessage.classList.add('hidden'), 3000);
       }
+    });
+
+    // JavaScript para o botão de carrinho
+    document.getElementById('add-to-cart').addEventListener('click', function() {
+      alert('Porta-Maquiagem GreenWave adicionado ao carrinho!');
     });
   </script>
 </body>
