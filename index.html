@@ -1,311 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gerenciamento de Pacientes</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-        .table-header:hover {
-            background-color: #e5e7eb;
-            cursor: pointer;
-        }
-        .fade-in {
-            animation: fadeIn 0.3s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .input-focus {
-            transition: all 0.3s ease;
-        }
-        .input-focus:focus {
-            border-color: #1e40af;
-            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Porta-maquiagem ecológico GreenWave, feito de papelão reciclado, para organizar seus cosméticos de forma sustentável.">
+  <meta name="keywords" content="porta-maquiagem, organizador de maquiagem, papelão reciclado, ecológico, sustentável">
+  <title>GreenWave - Porta-Maquiagem Ecológico</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <!-- Cabeçalho -->
-    <header class="bg-blue-800 text-white p-4 shadow-lg">
-        <div class="container mx-auto flex items-center justify-between">
-            <div class="flex items-center">
-                <img src="https://via.placeholder.com/40" alt="Logo" class="mr-3" aria-hidden="true">
-                <h1 class="text-2xl font-bold">Sistema de Gerenciamento de Pacientes</h1>
-            </div>
-            <nav aria-label="Navegação principal">
-                <ul class="flex space-x-4">
-                    <li><a href="#cadastro" class="hover:underline" aria-current="page">Cadastrar</a></li>
-                    <li><a href="#pacientes" class="hover:underline">Ver Pacientes</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <div class="container mx-auto p-6">
-        <!-- Formulário de Cadastro -->
-        <section id="cadastro" class="bg-white p-6 rounded-lg shadow-md mb-8 fade-in" aria-labelledby="cadastro-heading">
-            <h2 id="cadastro-heading" class="text-xl font-semibold text-gray-800 mb-4">Cadastrar Novo Paciente</h2>
-            <form id="signupForm" class="space-y-4">
-                <div>
-                    <label for="patientId" class="block text-sm font-medium text-gray-700">ID do Paciente</label>
-                    <input type="text" id="patientId" class="mt-1 p-2 w-full border rounded-md input-focus" required aria-describedby="patientId-error">
-                    <p id="patientId-error" class="text-red-500 text-sm mt-1 hidden"></p>
-                </div>
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
-                    <input type="text" id="name" class="mt-1 p-2 w-full border rounded-md input-focus" required aria-describedby="name-error" maxlength="100">
-                    <p id="name-error" class="text-red-500 text-sm mt-1 hidden"></p>
-                </div>
-                <div>
-                    <label for="dob" class="block text-sm font-medium text-gray-700">Data de Nascimento (DD/MM/YYYY)</label>
-                    <input type="text" id="dob" class="mt-1 p-2 w-full border rounded-md input-focus" required aria-describedby="dob-error">
-                    <p id="dob-error" class="text-red-500 text-sm mt-1 hidden"></p>
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
-                    <input type="email" id="email" class="mt-1 p-2 w-full border rounded-md input-focus" required aria-describedby="email-error">
-                    <p id="email-error" class="text-red-500 text-sm mt-1 hidden"></p>
-                </div>
-                <div>
-                    <label for="address" class="block text-sm font-medium text-gray-700">Endereço</label>
-                    <input type="text" id="address" class="mt-1 p-2 w-full border rounded-md input-focus" aria-describedby="address-error">
-                    <p id="address-error" class="text-red-500 text-sm mt-1 hidden"></p>
-                </div>
-                <button type="submit" class="bg-blue-800 text-white p-2 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500">Cadastrar Paciente</button>
-            </form>
-        </section>
-
-        <!-- Lista de Pacientes -->
-        <section id="pacientes" class="bg-white p-6 rounded-lg shadow-md fade-in" aria-labelledby="pacientes-heading">
-            <h2 id="pacientes-heading" class="text-xl font-semibold text-gray-800 mb-4">Lista de Pacientes</h2>
-            <div class="mb-4">
-                <label for="search" class="block text-sm font-medium text-gray-700">Buscar por ID ou Nome</label>
-                <input type="text" id="search" class="mt-1 p-2 w-full border rounded-md input-focus" placeholder="Digite ID ou nome">
-            </div>
-            <button id="exportCsv" class="bg-gray-600 text-white p-2 rounded-md hover:bg-gray-700 mb-4">Exportar como CSV</button>
-            <table class="w-full border-collapse" aria-describedby="pacientes-heading">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th class="border p-2 table-header" data-sort="patientId">ID do Paciente</th>
-                        <th class="border p-2 table-header" data-sort="name">Nome</th>
-                        <th class="border p-2 table-header" data-sort="dob">Data de Nascimento</th>
-                        <th class="border p-2 table-header" data-sort="email">E-mail</th>
-                        <th class="border p-2">Endereço</th>
-                        <th class="border p-2">Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="patientTableBody"></tbody>
-            </table>
-        </section>
+<body class="bg-gray-100 font-sans">
+  <!-- Cabeçalho -->
+  <header class="bg-green-700 text-white py-4 sticky top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-2xl font-bold">GreenWave</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#home" class="hover:underline">Início</a></li>
+          <li><a href="#benefits" class="hover:underline">Benefícios</a></li>
+          <li><a href="#testimonials" class="hover:underline">Depoimentos</a></li>
+          <li><a href="#contact" class="hover:underline">Contato</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <script>
-        // Carrega pacientes do localStorage
-        let patients = JSON.parse(localStorage.getItem('patients')) || [];
+  <!-- Seção Hero -->
+  <section id="home" class="bg-cover bg-center h-screen flex items-center justify-center" style="background-image: url('https://source.unsplash.com/random/1600x900/?sustainability,recycled')">
+    <div class="text-center text-white bg-black bg-opacity-50 p-8 rounded-lg">
+      <h2 class="text-4xl font-bold mb-4">GreenWave: Organize com Sustentabilidade</h2>
+      <p class="text-lg mb-6">Porta-maquiagem ecológico feito de papelão reciclado, perfeito para organizar seus cosméticos com estilo e consciência ambiental.</p>
+      <a href="#contact" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-700">Compre Agora</a>
+    </div>
+  </section>
 
-        // Funções de validação
-        function isValidDate(dateStr) {
-            const regex = /^\d{2}\/\d{2}\/\d{4}$/;
-            if (!regex.test(dateStr)) return false;
-            const [day, month, year] = dateStr.split('/').map(Number);
-            const date = new Date(year, month - 1, day);
-            return date.getDate() === day && date.getMonth() === month - 1 && date.getFullYear() === year;
-        }
+  <!-- Seção de Benefícios -->
+  <section id="benefits" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Por que escolher o Porta-Maquiagem GreenWave?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <h3 class="text-xl font-semibold mb-2">Sustentabilidade</h3>
+          <p>Feito de papelão reciclado, contribui para a redução de resíduos e um planeta mais verde.</p>
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-semibold mb-2">Praticidade</h3>
+          <p>Divisórias personalizáveis para organizar batons, pincéis e outros cosméticos com facilidade.</p>
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-semibold mb-2">Design Personalizável</h3>
+          <p>Escolha cores e estampas para combinar com seu estilo, mantendo a elegância e funcionalidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function isValidEmail(email) {
-            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return regex.test(email);
-        }
+  <!-- Seção de Depoimentos -->
+  <section id="testimonials" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">O que nossos clientes dizem</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <p class="italic">"O porta-maquiagem GreenWave organizou minha penteadeira e ainda é ecológico! Adoro o design personalizado."</p>
+          <p class="mt-4 font-semibold">- Ana L., Maquiadora Profissional</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <p class="italic">"Prático, leve e sustentável. Agora meus cosméticos estão sempre em ordem, sem prejudicar o meio ambiente."</p>
+          <p class="mt-4 font-semibold">- Carlos M., Consumidor Consciente</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function isUniquePatientId(patientId, excludeIndex = -1) {
-            return !patients.some((patient, index) => patient.patientId === patientId && index !== excludeIndex);
-        }
+  <!-- Formulário de Contato -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Entre em Contato</h2>
+      <div class="max-w-lg mx-auto">
+        <div id="contact-form" class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium">Nome</label>
+            <input type="text" id="name" class="w-full p-2 border rounded-md" placeholder="Seu nome">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium">E-mail</label>
+            <input type="email" id="email" class="w-full p-2 border rounded-md" placeholder="Seu e-mail">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium">Mensagem</label>
+            <textarea id="message" class="w-full p-2 border rounded-md" rows="4" placeholder="Sua mensagem"></textarea>
+          </div>
+          <button id="submit-btn" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-700">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Exibe pacientes na tabela
-        function displayPatients(filter = '') {
-            const tableBody = document.getElementById('patientTableBody');
-            tableBody.innerHTML = '';
-            const filteredPatients = patients.filter(patient => 
-                patient.patientId.toLowerCase().includes(filter.toLowerCase()) || 
-                patient.name.toLowerCase().includes(filter.toLowerCase())
-            );
-            filteredPatients.forEach((patient, index) => {
-                const row = document.createElement('tr');
-                row.classList.add('fade-in');
-                row.innerHTML = `
-                    <td class="border p-2">${patient.patientId}</td>
-                    <td class="border p-2">${patient.name}</td>
-                    <td class="border p-2">${patient.dob}</td>
-                    <td class="border p-2">${patient.email}</td>
-                    <td class="border p-2">${patient.address || ''}</td>
-                    <td class="border p-2">
-                        <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 edit-btn" data-index="${index}">Editar</button>
-                        <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 delete-btn" data-index="${index}">Excluir</button>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
+  <!-- Rodapé -->
+  <footer class="bg-green-700 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 GreenWave. Todos os direitos reservados.</p>
+      <p class="mt-2">Contato: contato@greenwave.com | (11) 9876-5432</p>
+    </div>
+  </footer>
 
-            // Adiciona eventos para botões de editar e excluir
-            document.querySelectorAll('.edit-btn').forEach(btn => {
-                btn.addEventListener('click', () => editPatient(parseInt(btn.getAttribute('data-index'))));
-            });
-            document.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', () => deletePatient(parseInt(btn.getAttribute('data-index'))));
-            });
-        }
+  <script>
+    // JavaScript para o formulário de contato
+    document.getElementById('submit-btn').addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
 
-        // Ordena pacientes
-        function sortPatients(key) {
-            patients.sort((a, b) => {
-                if (a[key] < b[key]) return -1;
-                if (a[key] > b[key]) return 1;
-                return 0;
-            });
-            displayPatients(document.getElementById('search').value);
-        }
-
-        // Edita paciente
-        function editPatient(index) {
-            const patient = patients[index];
-            document.getElementById('patientId').value = patient.patientId;
-            document.getElementById('name').value = patient.name;
-            document.getElementById('dob').value = patient.dob;
-            document.getElementById('email').value = patient.email;
-            document.getElementById('address').value = patient.address || '';
-            patients.splice(index, 1); // Remove temporariamente para validação de ID
-            document.getElementById('signupForm').setAttribute('data-edit-index', index);
-        }
-
-        // Exclui paciente
-        function deletePatient(index) {
-            Swal.fire({
-                title: 'Confirmar Exclusão',
-                text: 'Deseja realmente excluir este paciente?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Excluir',
-                cancelButtonText: 'Cancelar',
-            }).then(result => {
-                if (result.isConfirmed) {
-                    patients.splice(index, 1);
-                    localStorage.setItem('patients', JSON.stringify(patients));
-                    displayPatients(document.getElementById('search').value);
-                    Swal.fire('Excluído!', 'Paciente removido com sucesso.', 'success');
-                }
-            });
-        }
-
-        // Exporta para CSV
-        document.getElementById('exportCsv').addEventListener('click', () => {
-            const csvContent = [
-                'ID do Paciente,Nome,Data de Nascimento,E-mail,Endereço',
-                ...patients.map(p => 
-                    `"${p.patientId}","${p.name}","${p.dob}","${p.email}","${p.address || ''}"`
-                )
-            ].join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'pacientes.csv';
-            link.click();
-        });
-
-        // Manipula envio do formulário
-        document.getElementById('signupForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            document.querySelectorAll('.text-red-500').forEach(el => el.classList.add('hidden'));
-
-            const patientId = document.getElementById('patientId').value.trim();
-            const name = document.getElementById('name').value.trim();
-            const dob = document.getElementById('dob').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const editIndex = parseInt(this.getAttribute('data-edit-index') || '-1');
-
-            // Validação
-            let valid = true;
-            if (!patientId) {
-                document.getElementById('patientId-error').textContent = 'ID do paciente é obrigatório.';
-                document.getElementById('patientId-error').classList.remove('hidden');
-                valid = false;
-            } else if (!isUniquePatientId(patientId, editIndex)) {
-                document.getElementById('patientId-error').textContent = 'ID do paciente deve ser único.';
-                document.getElementById('patientId-error').classList.remove('hidden');
-                valid = false;
-            }
-            if (!name || name.length > 100) {
-                document.getElementById('name-error').textContent = 'Nome é obrigatório e deve ter até 100 caracteres.';
-                document.getElementById('name-error').classList.remove('hidden');
-                valid = false;
-            }
-            if (!dob || !isValidDate(dob)) {
-                document.getElementById('dob-error').textContent = 'Data válida (DD/MM/YYYY) é obrigatória.';
-                document.getElementById('dob-error').classList.remove('hidden');
-                valid = false;
-            }
-            if (!email || !isValidEmail(email)) {
-                document.getElementById('email-error').textContent = 'E-mail válido é obrigatório.';
-                document.getElementById('email-error').classList.remove('hidden');
-                valid = false;
-            }
-
-            if (!valid) {
-                Swal.fire({
-                    title: 'Erro',
-                    text: 'Por favor, corrija os erros no formulário.',
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                });
-                return;
-            }
-
-            // Adiciona ou atualiza paciente
-            const patient = { patientId, name, dob, email, address };
-            if (editIndex >= 0) {
-                patients[editIndex] = patient;
-                this.removeAttribute('data-edit-index');
-            } else {
-                patients.push(patient);
-            }
-            localStorage.setItem('patients', JSON.stringify(patients));
-
-            // Exibe mensagem de sucesso e limpa formulário
-            Swal.fire({
-                title: 'Sucesso',
-                text: editIndex >= 0 ? 'Paciente atualizado com sucesso!' : 'Paciente cadastrado com sucesso!',
-                icon: 'success',
-                timer: 2000,
-                showConfirmButton: false,
-            });
-            this.reset();
-
-            // Atualiza tabela
-            displayPatients(document.getElementById('search').value);
-        });
-
-        // Manipula busca dinâmica
-        document.getElementById('search').addEventListener('input', function () {
-            displayPatients(this.value);
-        });
-
-        // Manipula ordenação da tabela
-        document.querySelectorAll('.table-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const key = header.getAttribute('data-sort');
-                if (key) sortPatients(key);
-            });
-        });
-
-        // Exibição inicial
-        displayPatients();
-    </script>
+      if (name && email && message) {
+        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    });
+  </script>
 </body>
 </html>
